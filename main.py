@@ -1,12 +1,13 @@
 import pygame
 import random
+import sys
 pygame.init()
 WIDTH, HEIGHT = 500, 500
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Blue and Red Sprite Game")
 BLUE, RED, BLACK, WHITE = (0, 0, 255), (255, 0, 0), (0, 0, 0), (255, 255, 255)
 font = pygame.font.Font(None, 50)
-#blue_size = 20
+blue_size = 20
 blue_pos = [200, 200]
 speed = 5
 score = 0
@@ -32,6 +33,7 @@ while True:
         red_rect = pygame.Rect(*red_pos, 20, 20)
         if blue_rect.colliderect(red_rect):
             score += 1
+            blue_size += 20
             red_pos = [random.randint(0, WIDTH - 20), random.randint(0, HEIGHT - 20)]
         if score >= 10:
             game_state = "win"
